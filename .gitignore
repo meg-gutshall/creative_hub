@@ -1,6 +1,8 @@
 *.gem
 *.rbc
 *.lock
+/db/*.sqlite
+/db/schema.rb
 /.config
 /coverage/
 /InstalledFiles
