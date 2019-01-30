@@ -1,0 +1,11 @@
+<h2>Create new test</h2>
+<form action="/tests" method="post">
+	<input type="text" name="questions[1][text]" placeholder="Question 1" required><br>
+	Check the answer(s) that are correct:
+	<ul class="test_answers">
+		<input type="text" name="questions[1][answer][]" placeholder="Q1 Answer1" required><input type="checkbox" name="questions[1][is_correct][]" value="true"><br>
+		<input type="text" name="questions[1][answer][]" placeholder="Q1 Answer2" required><input type="checkbox" name="questions[1][is_correct][]" value="true"><br>
+		<input type="text" name="questions[1][answer][]" placeholder="Q1 Answer3" required><input type="checkbox" name="questions[1][is_correct][]" value="true"><br>
+		<input type="text" name="questions[1][answer][]" placeholder="Q1 Answer4" required><input type="checkbox" name="questions[1][is_correct][]" value="true"><br>
+	</ul><br>
+</form>
