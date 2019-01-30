@@ -11,6 +11,7 @@ class TestsController < ApplicationController
 	end
 
 	post '/tests' do
-
+		binding.pry
+		
 	end
 end
