@@ -18,9 +18,13 @@ class CertificatesController < ApplicationController
 	end
 
 	get '/certificates/:id/edit' do
+		if !current_user.is_admin
+			redirect '/tests'
+		end
+		
 		@cert = Certificate.find(params[:id])
 		@tests = Test.all
-		
+
 		erb :'/certificates/edit'
 	end
 

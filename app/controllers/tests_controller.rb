@@ -29,7 +29,7 @@ class TestsController < ApplicationController
 			end
 		end
 
-		erb :'/tests/succeed'
+		redirect '/certificates'
 	end
 
 	get '/tests/failed' do
@@ -157,6 +157,9 @@ class TestsController < ApplicationController
 	end
 
 	get '/tests/:id/edit' do
+		if !current_user.is_admin
+			redirect '/tests'
+		end
 		@test = Test.find(params[:id])
 		@certificates = Certificate.all
 

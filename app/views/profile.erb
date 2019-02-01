@@ -8,3 +8,15 @@
 	Bio: <textarea name="user[bio]" cols="40" rows="5"><%=@user.bio%></textarea><br>
 	<input type="submit" value="Update profile">
 </form>
+<h3>Tests completed:</h3>
+<ul>
+	<% @user.tests.each do |t| %>
+		<li><%=t.name%></li>
+	<% end %>
+</ul>
+<h3>Certificates achieved:</h3>
+<ul>
+	<% @user.certificates.each do |c| %>
+		<li><%=c.name%></li>
+	<% end %>
+</ul>
