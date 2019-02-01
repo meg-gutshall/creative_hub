@@ -12,6 +12,36 @@ class TestsController < ApplicationController
 		erb :'/tests/new'
 	end
 
+	get '/tests/:id/succeed' do
+		current_user.tests << Test.find(params[:id])
+
+		# user passed the test, now to see if they earned a new certificate
+		certificates = Certificate.all
+		certificates.each do |cert|
+			requisites = true
+			cert.tests.each do |t|
+				if !current_user.tests.include?(t)
+					requisites = false
+				end
+			end
+			if requisites
+				current_user.certificates << cert
+			end
+		end
+
+		erb :'/tests/succeed'
+	end
+
+	get '/tests/failed' do
+		erb :'/tests/failed'
+	end
+
+	get '/tests/:id/take' do
+		@test = Test.find(params[:id])
+
+		erb :'/tests/take'
+	end
+
 	post '/tests' do
 		# check to see if certificate_ids is empty
 		if !params[:test].keys.include?("certificate_ids")
@@ -123,6 +153,24 @@ class TestsController < ApplicationController
 		@certificates = Certificate.all
 
 		erb :'/tests/edit'
+	end
+
+	post '/tests/:id/check' do
+		binding.pry
+		passed = true
+		params[:questions].each do |id, answers|
+			original_question = Question.find(id)
+			original_question.answers.each do |a|
+				if params[:questions][id][a.id.to_s][:is_correct] != a.is_correct.to_s
+					passed = false
+				end
+			end
+		end
+		if passed
+			redirect "/tests/#{params[:id]}/succeed"
+		else
+			redirect '/tests/failed'
+		end
 	end
 
 	delete '/tests/:id' do

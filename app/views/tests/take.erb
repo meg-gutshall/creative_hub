@@ -1,0 +1,14 @@
+<h2><%=@test.name%> test</h2><hr>
+<h4>Answer the following questions correctly to pass!</h4>
+<form action="/tests/<%=@test.id%>/check" method="post">
+	<% @test.questions.each do |q| %>
+		<b><%=q.text%></b><br>
+		<ul>
+			<% q.answers.each do |a| %>
+				<input type="hidden" name="questions[<%=q.id%>][<%=a.id%>][is_correct]" value="false">
+				<input type="checkbox" name="questions[<%=q.id%>][<%=a.id%>][is_correct]" value="true"> <%=a.text%> <br>
+			<% end %>
+		</ul>
+	<% end %>
+	<input type="submit" value="Submit test">
+</form>
