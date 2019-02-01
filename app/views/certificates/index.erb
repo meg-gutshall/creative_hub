@@ -1,5 +1,10 @@
 <h2>Certificates</h2>
 <a href="/certificates/new"><button>Create new certificate</button></a><hr>
 <% @certificates.each do |cert| %>
-	<a href="/certificates/<%=cert.id%>"><h4><%=cert.name%></h4></a>
+	<a href="/certificates/<%=cert.id%>"><h4><%=cert.name%></a>
+		<% if logged_in? %>
+			<% if !current_user.certificates.include?(cert) %>
+				<a href="/certificates/<%=cert.id%>/apply"><button>Apply for certificate</button></a>
+			<% end %></h4>
+		<% end %>
 <% end %>

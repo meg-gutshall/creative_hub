@@ -1,0 +1,10 @@
+<h2>Apply for <%=@certificate.name%></h2><hr>
+To receive this test requires taking and passing the <br>
+the following tests: <br>
+<ul>
+	<% @certificate.tests.each do |test| %>
+		<% if !@tests.include?(test) %>
+			<%=test.name%> <a href="/tests/<%=test.id%>/take"><button>Take test</button></a><br>
+		<% end %>
+	<% end %>
+</ul>

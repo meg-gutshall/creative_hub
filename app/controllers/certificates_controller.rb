@@ -42,4 +42,11 @@ class CertificatesController < ApplicationController
 		@certificate.destroy
 		redirect '/certificates'
 	end
+
+	get '/certificates/:id/apply' do
+		@certificate = Certificate.find(params[:id])
+		@tests = current_user.tests
+
+		erb :'certificates/apply'
+	end
 end
