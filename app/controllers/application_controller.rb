@@ -56,6 +56,21 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get '/profile' do
+    if !logged_in?
+      redirect '/login'
+    end
+    @user = current_user
+
+    erb :'profile'
+  end
+
+  patch '/profile' do
+    @user = current_user
+    @user.update(params[:user])
+    redirect '/profile'
+  end
+
   helpers do
 		def logged_in?
 			!!session[:user_id]
