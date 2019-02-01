@@ -1,0 +1,9 @@
+<h2><%=@user.full_name%></h2>
+Phone number: <%=@user.phone_number%> <br>
+Email: <%=@user.email%> <br>
+<h3>Certifications</h3><hr>
+<ul>
+<% @user.certificates.each do |c| %>
+	<li><%=c.name%></li>
+<% end %>
+</ul>

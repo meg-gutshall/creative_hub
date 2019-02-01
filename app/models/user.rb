@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
     	self.account_paid = false if self.bool_field.nil?
     	self.is_checked_in = false if self.bool_field.nil?
   	end
+
+  	def full_name
+  		"#{self.first_name} #{self.last_name}"
+  	end
 end	

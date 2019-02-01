@@ -1,0 +1,7 @@
+<h2>Users</h2>
+<ul>
+<% @users.each do |user| %>
+	<h4><a href="/users/<%=user.id%>"><%=user.first_name%> <%=user.last_name%></a></h4>
+<% end %>
+</ul>
+<h3>Create user report based on:</h3>
