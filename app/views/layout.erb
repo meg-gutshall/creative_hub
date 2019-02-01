@@ -5,11 +5,26 @@
   </head>
   <body>
   	<header><h2>NWA Creative Hub</h2></header><hr>
-  	<nav>
-  		<a href="/tests">Tests</a>
-  		<a href="/certificates">Certificates</a>
-  		<a href="/users">Users</a>
-  	</nav><hr>
+  	
+    <div class="nav">
+      <div align="left" class=left_nav>
+      		<a href="/tests">Tests</a>
+      		<a href="/certificates">Certificates</a>
+          <% if logged_in? %>
+            <% if current_user.is_admin %>
+              <a href="/users">Users</a>
+          <% end %>
+      </div>
+      <div align="right" class=right_nav>  
+          Hello, <%=current_user.first_name%> <%=current_user.last_name%>!
+          <a href="/users/edit">Profile</a>
+          <a href="/logout">Logout</a>
+        <% else %>
+          <a href="/login">Log In</a>
+          <a href="/signup">Sign up</a>
+        <% end %>
+      </div>
+  	</div><hr>
     <div class="container">
       <%= yield %>
     </div>
