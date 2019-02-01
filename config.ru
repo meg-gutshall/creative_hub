@@ -7,5 +7,6 @@ end
 use Rack::MethodOverride
 use TestsController
 use AnswersController
+use CertificatesController
 # use UsersController
 run ApplicationController

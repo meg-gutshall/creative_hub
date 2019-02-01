@@ -5,9 +5,9 @@ class CertificatesController < ApplicationController
 		erb :'/certificates/index'
 	end
 
-	get '/cerificates/:id' do
+	get '/certificates/:id' do
 		@cert = Certificate.find(params[:id])
 
-		erb :'/cerificates/show'
+		erb :'/certificates/show'
 	end
 end

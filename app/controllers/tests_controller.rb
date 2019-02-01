@@ -124,4 +124,8 @@ class TestsController < ApplicationController
 
 		erb :'/tests/edit'
 	end
+
+	delete '/tests/:id' do
+		"Made it to delete page"
+	end
 end

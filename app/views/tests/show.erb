@@ -1,7 +1,11 @@
-<h2><%=@test.name%></h2><hr>
+<h2><%=@test.name%></h2>
+<form action="/tests/<%=@test.id%>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete test">
+</form><a href="/tests/<%=@test.id%>/edit"><button>Edit test</button></a><hr>
 <h4>Questions</h4>
 <% @test.questions.each do |q| %>
-<%=q.text%> <a href="/questions/<%=q.id%>/delete"><button>Delete</button></a><a href="/questions/<%=q.id%>/edit"><button>Edit</button></a><br>
+<%=q.text%> <br>
 Correct answers:
 <ul>
 	<% q.answers.each do |a| %>

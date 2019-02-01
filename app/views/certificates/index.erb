@@ -1,0 +1,4 @@
+<h2>Certificates</h2><hr>
+<% @certificates.each do |cert| %>
+	<a href="/certificates/<%=cert.id%>"><h4><%=cert.name%></h4></a>
+<% end %>
