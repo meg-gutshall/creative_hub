@@ -6,5 +6,6 @@ end
 
 use Rack::MethodOverride
 use TestsController
+use AnswersController
 # use UsersController
 run ApplicationController

@@ -1,0 +1,20 @@
+<h2><%=@test.name%></h2><hr>
+<h4>Questions</h4>
+<% @test.questions.each do |q| %>
+<%=q.text%> <a href="/questions/<%=q.id%>/delete"><button>Delete</button></a><a href="/questions/<%=q.id%>/edit"><button>Edit</button></a><br>
+Correct answers:
+<ul>
+	<% q.answers.each do |a| %>
+		<% if a.is_correct %>
+			<li><%=a.text%></li>
+		<% end %>
+	<% end %>
+
+</ul><hr>
+<% end %>
+Used in certificates: <br>
+<ul>
+<% @test.certificates.each do |cert| %>
+	<a href="/certificates/<%=cert.id%>"><%=cert.name%></a>
+<% end %>
+</ul>

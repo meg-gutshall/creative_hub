@@ -1,5 +1,15 @@
-<h2>Create new test</h2>
+<h2>Create new test</h2><hr>
 <form action="/tests" method="post">
+	<h3>Test name:</h3>
+	<input type="text" name="test[name]"><hr>
+	<h3><%="Choose the certificate that this test applies to:<br>" if @certificates.length > 0%></h3>
+	<% @certificates.each do |certificate| %>
+		<input type="checkbox" name=test[certificate_ids][] value="<%=certificate.id%>">
+			<%=certificate.name%>
+		</input>
+	<% end %>
+	<h3>Enter the name of a new certificate:</h3>
+	<input type="text" id="text_question" name="certificate[name]" placeholder="Certificate name: "><hr>
 	<h3>Enter the text for question 1:</h3>
 	<input type="text" id="test_question" name="questions[][text]" placeholder="Question 1:">
 	<ul id="text_answers">
@@ -12,48 +22,53 @@
 		<input type="text" name="questions[][answers][][text]" placeholder="Answer4:">
 		<input type="checkbox" name="questions[][answers][][is_correct]" value="true"><br>
 	</ul><hr>
+	<h3>Enter the text for question 2:</h3>
 	<input type="text" id="test_question" name="questions[][text]" placeholder="Question 2:">
 	<ul id="text_answers">
-		<input type="text" name="questions[][answers][][text]" placeholder="Answer1:"><br>
-		<input type="text" name="questions[][answers][][text]" placeholder="Answer2:"><br>
-		<input type="text" name="questions[][answers][][text]" placeholder="Answer3:"><br>
-		<input type="text" name="questions[][answers][][text]" placeholder="Answer4:"><br>
-	</ul><hr>
-<!--	<h3>Enter the text for question 2:</h3>
-	<input type="text" id="test_question" name="questions[1][text]" placeholder="Question 2"><br>
-	Check the answer(s) that are correct:
-	<ul class="test_answers">
-		<input type="text" id="test_answer" name="answer[0][text]" placeholder="Q2 Answer1"><input type="checkbox" name="questions[2][answer][0]" value="true"><br>
-		<input type="text" id="test_answer" name="questions[1][answer][]" placeholder="Q2 Answer2"><input type="checkbox" name="questions[2][answer][1]" value="true"><br>
-		<input type="text" id="test_answer" name="questions[1][answer][]" placeholder="Q2 Answer3"><input type="checkbox" name="questions[2][answer][2]" value="true"><br>
-		<input type="text" id="test_answer" name="questions[1][answer][]" placeholder="Q2 Answer4"><input type="checkbox" name="questions[2][answer][3]" value="true"><br>
+		<input type="text" name="questions[][answers][][text]" placeholder="Answer1:">
+		<input type="checkbox" name="questions[][answers][][is_correct]" value="true"><br>
+		<input type="text" name="questions[][answers][][text]" placeholder="Answer2:">
+		<input type="checkbox" name="questions[][answers][][is_correct]" value="true"><br>
+		<input type="text" name="questions[][answers][][text]" placeholder="Answer3:">
+		<input type="checkbox" name="questions[][answers][][is_correct]" value="true"><br>
+		<input type="text" name="questions[][answers][][text]" placeholder="Answer4:">
+		<input type="checkbox" name="questions[][answers][][is_correct]" value="true"><br>
 	</ul><hr>
 	<h3>Enter the text for question 3:</h3>
-	<input type="text" id="test_question" name="questions[3][text]" placeholder="Question 3"><br>
-	Check the answer(s) that are correct:
-	<ul class="test_answers">
-		<input type="text" id="test_answer" name="questions[3][answer][]" placeholder="Q3 Answer1"><input type="checkbox" name="questions[3][is_correct][]" value="true"><br>
-		<input type="text" id="test_answer" name="questions[3][answer][]" placeholder="Q3 Answer2"><input type="checkbox" name="questions[3][is_correct][]" value="true"><br>
-		<input type="text" id="test_answer" name="questions[3][answer][]" placeholder="Q3 Answer3"><input type="checkbox" name="questions[3][is_correct][]" value="true"><br>
-		<input type="text" id="test_answer" name="questions[3][answer][]" placeholder="Q3 Answer4"><input type="checkbox" name="questions[3][is_correct][]" value="true"><br>
+	<input type="text" id="test_question" name="questions[][text]" placeholder="Question 2:">
+	<ul id="text_answers">
+		<input type="text" name="questions[][answers][][text]" placeholder="Answer1:">
+		<input type="checkbox" name="questions[][answers][][is_correct]" value="true"><br>
+		<input type="text" name="questions[][answers][][text]" placeholder="Answer2:">
+		<input type="checkbox" name="questions[][answers][][is_correct]" value="true"><br>
+		<input type="text" name="questions[][answers][][text]" placeholder="Answer3:">
+		<input type="checkbox" name="questions[][answers][][is_correct]" value="true"><br>
+		<input type="text" name="questions[][answers][][text]" placeholder="Answer4:">
+		<input type="checkbox" name="questions[][answers][][is_correct]" value="true"><br>
 	</ul><hr>
 	<h3>Enter the text for question 4:</h3>
-	<input type="text" id="test_question" name="questions[4][text]" placeholder="Question 4"><br>
-	Check the answer(s) that are correct:
-	<ul class="test_answers">
-		<input type="text" id="test_answer" name="questions[4][answer][]" placeholder="Q4 Answer1"><input type="checkbox" name="questions[4][is_correct][]" value="true"><br>
-		<input type="text" id="test_answer" name="questions[4][answer][]" placeholder="Q4 Answer2"><input type="checkbox" name="questions[4][is_correct][]" value="true"><br>
-		<input type="text" id="test_answer" name="questions[4][answer][]" placeholder="Q4 Answer3"><input type="checkbox" name="questions[4][is_correct][]" value="true"><br>
-		<input type="text" id="test_answer" name="questions[4][answer][]" placeholder="Q4 Answer4"><input type="checkbox" name="questions[4][is_correct][]" value="true"><br>
+	<input type="text" id="test_question" name="questions[][text]" placeholder="Question 2:">
+	<ul id="text_answers">
+		<input type="text" name="questions[][answers][][text]" placeholder="Answer1:">
+		<input type="checkbox" name="questions[][answers][][is_correct]" value="true"><br>
+		<input type="text" name="questions[][answers][][text]" placeholder="Answer2:">
+		<input type="checkbox" name="questions[][answers][][is_correct]" value="true"><br>
+		<input type="text" name="questions[][answers][][text]" placeholder="Answer3:">
+		<input type="checkbox" name="questions[][answers][][is_correct]" value="true"><br>
+		<input type="text" name="questions[][answers][][text]" placeholder="Answer4:">
+		<input type="checkbox" name="questions[][answers][][is_correct]" value="true"><br>
 	</ul><hr>
 	<h3>Enter the text for question 5:</h3>
-	<input type="text" id="test_question" name="questions[5][text]" placeholder="Question 5"><br>
-	Check the answer(s) that are correct:
-	<ul class="test_answers">
-		<input type="text" id="test_answer" name="questions[5][answer][]" placeholder="Q5 Answer1"><input type="checkbox" name="questions[5][is_correct][]" value="true"><br>
-		<input type="text" id="test_answer" name="questions[5][answer][]" placeholder="Q5 Answer2"><input type="checkbox" name="questions[5][is_correct][]" value="true"><br>
-		<input type="text" id="test_answer" name="questions[5][answer][]" placeholder="Q5 Answer3"><input type="checkbox" name="questions[5][is_correct][]" value="true"><br>
-		<input type="text" id="test_answer" name="questions[5][answer][]" placeholder="Q5 Answer4"><input type="checkbox" name="questions[5][is_correct][]" value="true"><br>
-	</ul><hr> -->
+	<input type="text" id="test_question" name="questions[][text]" placeholder="Question 2:">
+	<ul id="text_answers">
+		<input type="text" name="questions[][answers][][text]" placeholder="Answer1:">
+		<input type="checkbox" name="questions[][answers][][is_correct]" value="true"><br>
+		<input type="text" name="questions[][answers][][text]" placeholder="Answer2:">
+		<input type="checkbox" name="questions[][answers][][is_correct]" value="true"><br>
+		<input type="text" name="questions[][answers][][text]" placeholder="Answer3:">
+		<input type="checkbox" name="questions[][answers][][is_correct]" value="true"><br>
+		<input type="text" name="questions[][answers][][text]" placeholder="Answer4:">
+		<input type="checkbox" name="questions[][answers][][is_correct]" value="true"><br>
+	</ul><hr>
 	<input type="submit" value="Create test">
 </form>

@@ -1,0 +1,15 @@
+<div class="navbar">
+		<a href="/tests">Tests</a>
+		<a href="/certificates">Certificates</a>
+		<a href="/users">Users</a>
+</div>
+<h2>Tests</h2><hr>
+<% @tests.each do |test| %>
+	<a href="/tests/<%=test.id%>"><%=test.name%></a><br>
+	Applies to certificates:
+	<ul>
+		<% test.certificates.each do |cert| %>
+			<li><a href="/certificates/<%=cert.id%>"><%=cert.name%></a></li>
+		<% end %>
+	</ul> <hr>
+<% end %>

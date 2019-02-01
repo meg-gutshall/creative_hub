@@ -1,0 +1,46 @@
+
+<form action="/tests/<%=@test.id%>" method="post">
+	<input type="hidden" name="_method" value="patch">
+	<h2>Edit <%=@test.name%> test</h2><hr>
+	<h4>Test name: <input id=edit_test_name type="text" name="test[name]" value="<%=@test.name%>"></h4><hr>
+	<h2>Edit existing questions:</h2>
+	<p>To delete an answer, empty the answer field. Use the checkboxes to change whether or not a given answer is <br>
+	considered correct.</p> <hr>
+
+	<% @test.questions.each do |q| %>
+		<b>Edit question text:</b><br>
+		<input type="text" value="<%=q.text%>" name="questions[<%=q.id%>][text]" size="75">
+		<ul>
+			<b>edit existing answers: check if correct</b><br>
+			<% q.answers.each do |a| %>
+				<input type="text" name="questions[<%=q.id%>][answers][<%=a.id%>][text]" value="<%=a.text%>">
+				<input type="checkbox" name="questions[<%=q.id%>][answers][<%=a.id%>][is_correct]" <%="checked" if a.is_correct%>>
+				<br>
+			<% end %> <br>
+			<b>or add new answers:</b><br>
+			<input type="text" name="answers[<%=q.id%>][text]"><input type="checkbox" name="answers[<%=q.id%>][is_correct]" value="true">Is correct answer?
+			<br>	
+		</ul><hr>
+			
+		
+	<% end %>
+	<h2>Add new question:</h2>
+	<input type="text" name="new[text]">
+	<ul>
+		Answers: <br>
+		<input type="text" name="new[answers][][text]"><input type="checkbox" name="new[answers][][is_correct]" value="true"><br>
+		<input type="text" name="new[answers][][text]"><input type="checkbox" name="new[answers][][is_correct]" value="true"><br>
+		<input type="text" name="new[answers][][text]"><input type="checkbox" name="new[answers][][is_correct]" value="true"><br>
+		<input type="text" name="new[answers][][text]"><input type="checkbox" name="new[answers][][is_correct]" value="true"><br>
+	</ul><hr>
+	<h2>Edit associated certificates: </h2>
+	<ul>
+		<% @certificates.each do |cert| %>
+			<input type="checkbox" value="<%=cert.id%>" name="test[certificate_ids][]" <%="checked" if @test.certificates.include?(cert)%>><%=cert.name%> <br>
+		<% end %>
+		<h4>or create a new certificate:</h4>
+		<input type="text" name="certificate[name]">
+	</ul>
+	<input type="submit" value="Edit test">
+
+</form>
