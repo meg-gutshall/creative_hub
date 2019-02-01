@@ -1,7 +1,9 @@
 <h2>Tests</h2>
-<a href="/tests/new"><button>Create new test</button></a><hr>
+<% if current_user.is_admin %>
+	<a href="/tests/new"><button>Create new test</button></a><hr>
+<% end %>
 <% @tests.each do |test| %>
-	<a href="/tests/<%=test.id%>"><%=test.name%></a><br>
+	<h3><a href="/tests/<%=test.id%>"><%=test.name%></a></h3><br>
 	Applies to certificates:
 	<ul>
 		<% test.certificates.each do |cert| %>

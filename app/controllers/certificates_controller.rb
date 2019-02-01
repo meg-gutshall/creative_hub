@@ -19,7 +19,8 @@ class CertificatesController < ApplicationController
 
 	get '/certificates/:id/edit' do
 		@cert = Certificate.find(params[:id])
-
+		@tests = Test.all
+		
 		erb :'/certificates/edit'
 	end
 

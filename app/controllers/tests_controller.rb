@@ -58,6 +58,7 @@ class TestsController < ApplicationController
 		params[:questions].each do |question|
 			if !question[:text].empty?
 				new_q = Question.new(:text => question[:text])
+				binding.pry
 				question[:answers].each do |answer|
 					if !answer[:text].empty?
 						new_a = Answer.create(answer)
@@ -66,6 +67,13 @@ class TestsController < ApplicationController
 				end
 				new_q.save  
 				new_test.questions << new_q
+			end
+		end
+
+		# make sure answers are set to false and not nil
+		Answer.all.each do |a|
+			if a.is_correct.nil?
+				a.is_correct = false
 			end
 		end
 		new_test.save
