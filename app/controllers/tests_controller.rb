@@ -20,7 +20,7 @@ class TestsController < ApplicationController
 
 		# check to see if a new certificate name was given
 		if !params[:certificate][:name].empty?
-			new_certificate = Certificate.create(params[:certificate])
+			new_certificate = Certificate.find_or_create_by(params[:certificate])
 			params[:test][:certificate_ids] << new_certificate.id
 		end
 
@@ -126,6 +126,9 @@ class TestsController < ApplicationController
 	end
 
 	delete '/tests/:id' do
-		"Made it to delete page"
+		@test = Test.find(params[:id])
+		@test.destroy
+
+		redirect '/tests'
 	end
 end

@@ -1,8 +1,8 @@
-<h2><%=@cert.name%></h2>
+<h2>Certificate: <%=@cert.name%></h2>
 <form action="/certificates/<%=@cert.id%>" method="post">
 	<input type="hidden" name="_method" value="delete">
-	<input type="submit" value="Delete test">
-</form><a href="/certificates/<%=@cert.id%>/edit"><button>Edit test</button></a><hr>
+	<input type="submit" value="Delete certificate">
+</form><a href="/certificates/<%=@cert.id%>/edit"><button>Edit certificate</button></a><hr>
 Requires completion of tests: <br>
 <ul>
 	<% @cert.tests.each do |t| %>

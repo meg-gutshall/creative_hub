@@ -1,0 +1,6 @@
+<h2>Edit <%=@cert.name%> certificate</h2>
+<form action="/certificates/<%=@cert.id%>" method="post">
+	<input type="hidden" name="_method" value="patch">
+	Certificate name: <input type="text" value="<%=@cert.name%>" name="certificate[name]"><br>
+	<input type="submit" id="edit_button" value="Edit certificate">
+</form>

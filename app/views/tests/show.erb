@@ -1,4 +1,4 @@
-<h2><%=@test.name%></h2>
+<h2>Test: <%=@test.name%></h2>
 <form action="/tests/<%=@test.id%>" method="post">
 	<input type="hidden" name="_method" value="delete">
 	<input type="submit" value="Delete test">

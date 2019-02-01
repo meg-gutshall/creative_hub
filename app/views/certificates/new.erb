@@ -1,0 +1,9 @@
+<h2>Create new certificate</h2><hr>
+<form action="/certificates" method="post">
+	<input type="text" name="name" placeholder="Certifcate name:"><br>
+	Select the tests that the certificate requires: <br>
+	<% @tests.each do |t| %>
+		<input type="checkbox" value="<%=t.id%>" name=test_ids[]><%=t.name%><br>
+	<% end %>
+	<input type="submit" id="create_button" value="Create certificate">
+</form>
