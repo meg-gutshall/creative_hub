@@ -13,3 +13,5 @@ q.answers << Answer.create(:text => "Kinves", :is_correct => true)
 q.answers << Answer.create(:text => "Kittens", :is_correct => true)
 q.save
 t.questions << q
+
+admin = User.create(:first_name => "ad", :last_name => "min", :email => "brad.schrag@gmail.com" :phone_number => "479-799-2325", :password_digest => BCrypt::Password.create('admin'), :is_admin => true)
