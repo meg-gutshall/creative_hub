@@ -1,0 +1,24 @@
+<% if @users.count == 0 %>
+	No available individuals. Super sad face :-( :-( :-(
+<% else %>
+	<% @users.each do |u| %>
+		<h3><%=u.full_name%></h3>
+		<ul>
+			Email: <a href="mailto: <%=u.email%>"><%=u.email%></a><br>
+			Phone: <a href="tel: <%=u.phone_number%>"><%=u.phone_number%></a><br>
+			Certificates:
+			<ul>
+				<%u.certificates.each do |c|%>
+					<li>
+						<%=c.name%>
+					</li>
+				<% end %> <br>
+			</ul>
+			Payment status:
+			<ul>
+				<%="Paid in full" if u.account_paid%>
+				<%="Not paid" if !u.account_paid%>
+			</ul>
+		</ul><hr>
+	<% end %>
+<% end %>

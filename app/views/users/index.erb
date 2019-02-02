@@ -1,7 +1,28 @@
 <h2>Users</h2>
 <ul>
 <% @users.each do |user| %>
-	<h4><a href="/users/<%=user.id%>"><%=user.first_name%> <%=user.last_name%></a></h4>
+	<h4><a href="/users/<%=user.id%>"><%=user.full_name%></a></h4>
 <% end %>
 </ul>
-<h3>Create user report based on:</h3>
+<form action="/users/report" method="get">
+	<h3>Create user report based on:</h3>
+	<ul>
+		<h4>Certificates completed:</h4>
+		<ul>
+			<% @certificates.each do |cert| %>
+				<input type="checkbox" value="<%=cert.id%>" name="certificate_ids[]"><%=cert.name%> <br>
+			<% end %>
+		</ul>
+		<h4>Personnel type:</h4>
+		<ul>
+			<input type="checkbox" value="true" name="is_admin">Admin </input><br>
+			<input type="checkbox" value="true" name="is_volunteer">Volunteer </input><br>
+		</ul>
+		<h4>Account status:</h4>
+		<ul>
+			<input type="radio" value="true" name="account_paid">Payments current </input><br>	
+			<input type="radio" value="false" name="account_paid">Payments not current </input><br>
+		</ul>
+	</ul>
+	<input type="submit" value="Generate Report">
+</form>

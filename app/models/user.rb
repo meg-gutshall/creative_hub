@@ -13,7 +13,11 @@ class User < ActiveRecord::Base
     	self.is_checked_in = false if self.bool_field.nil?
   	end
 
-  	def full_name
-  		"#{self.first_name} #{self.last_name}"
-  	end
+	def full_name
+		"#{self.first_name} #{self.last_name}"
+	end
+
+  def is_certified(cert_id)
+    self.certificate_ids.include?(cert_id.to_i)
+  end
 end	

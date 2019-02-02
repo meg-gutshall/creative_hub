@@ -1,9 +1,22 @@
-<h2><%=@user.full_name%></h2>
-Phone number: <%=@user.phone_number%> <br>
-Email: <%=@user.email%> <br>
-<h3>Certifications</h3><hr>
+<h2><%=@user.full_name%>
+<% if current_user.is_admin %>
+	<a href="/users/<%=@user.id%>/edit"><button>Edit user</button></a></h2>
+<% end %>
+Phone number: <a href="tel: <%=@user.phone_number%>"> <%=@user.phone_number%></a> <br>
+Email: <a href="mailto: <%=@user.email%>"> <%=@user.email%></a><hr>
+<h3>Certifications</h3>
 <ul>
 <% @user.certificates.each do |c| %>
 	<li><%=c.name%></li>
 <% end %>
-</ul>
+</ul><hr>
+<h3>Personnel status</h3>
+<ul>
+	<%="<li>Volunteer</li>" if @user.is_volunteer %> 
+	<%="<li>Admin</li>" if @user.is_admin %> 
+</ul><hr>
+<h3>Payment status</h3>
+<ul>
+	<%="<li>Paid in full</li>" if @user.account_paid %> 
+	<%="<li>Not paid</li>" if !@user.account_paid %> 
+</ul><hr>

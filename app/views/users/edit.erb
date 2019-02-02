@@ -1,0 +1,17 @@
+<h2>Edit <%=@user.full_name%></h2><hr>
+<form action="/users/<%=@user.id%>" method="post">
+	<h3>Override certificates:</h3>
+	<% @certificates.each do |cert| %>
+		<input type="hidden" name="_method" value="patch">
+		<input type="checkbox" name="user[certificate_ids][]" value="<%=cert.id%>" <%="checked" if @user.certificates.include?(cert)%>><%=cert.name%> <br>
+	<% end %> <hr>
+	<h3>Personnel type:</h3>
+	<input type="hidden" name=user[is_volunteer] value="false">
+	<input type="checkbox" name="user[is_volunteer]" value="true" <%="checked" if @user.is_volunteer%>>Volunteer <br>
+	<input type="hidden" name=user[is_admin] value="false">
+	<input type="checkbox" name="user[is_admin]" value="true" <%="checked" if @user.is_admin%>>Admin <hr>
+	<h3>Payment status:</h3>
+	<input type="radio" name="user[account_paid]" value="true" <%="checked" if @user.account_paid%>>Paid <br>
+	<input type="radio" name="user[account_paid]" value="false" <%="checked" if !@user.account_paid%>>Not paid <hr>
+	<input type="submit" value="Update user">
+</form>	

@@ -14,4 +14,22 @@ q.answers << Answer.create(:text => "Kittens", :is_correct => true)
 q.save
 t.questions << q
 
-admin = User.create(:first_name => "ad", :last_name => "min", :email => "brad.schrag@gmail.com" :phone_number => "479-799-2325", :password_digest => BCrypt::Password.create('admin'), :is_admin => true)
+t = Test.create(:name => "Cleanliness")
+q = Question.create(:text => "When is it acceptable to leave messes for others to clean up?")
+q.answers << Answer.create(:text => "Always")
+q.answers << Answer.create(:text => "Sometimes")
+q.answers << Answer.create(:text => "Rarely")
+q.answers << Answer.create(:text => "Never")
+
+q = Question.create(:text => "Your momma lives here.")
+q.answers << Answer.create(:text => "True")
+q.answers << Answer.create(:text => "False")
+q.answers << Answer.create(:text => "Doesn't matter, clean up after yourself!")
+q.save
+t.questions << q
+
+c = Certificate.create(:name => "3d Printer")
+c = Certificate.create(:name => "CNC")
+
+admin = User.create(:first_name => "ad", :last_name => "min", :email => "brad.schrag@gmail.com", :phone_number => "479-799-2325", :password_digest => BCrypt::Password.create('admin'), :is_admin => true)
+non_admin = User.create(:first_name => "Mark", :last_name => "Not important", :email => "markschmo@nowhere.com", :phone_number => "555-4123", :password_digest => BCrypt::Password.create('mark'))
