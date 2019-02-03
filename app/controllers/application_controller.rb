@@ -7,6 +7,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     set :session_secret, "3lklk2ml23-0op;l"
     enable :sessions
+    use Rack::Flash
   end
 
   get '/' do
@@ -47,7 +48,7 @@ class ApplicationController < Sinatra::Base
 
   post '/signup' do
     if User.find_by(:email => params[:email])
-      message = "Duplicate email. Please try again."
+      flash[:message] = "Duplicate email. Please try again."
       redirect '/signup'
     end
     user = User.new(params)
@@ -55,7 +56,7 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = user.id
       redirect '/'
     else
-      message ="Something went wrong, please try again."
+      flash[:message] ="Something went wrong, please try again."
       redirect '/signup'
     end
   end

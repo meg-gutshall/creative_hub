@@ -16,6 +16,7 @@ class TestsController < ApplicationController
 		current_user.tests << Test.find(params[:id])
 
 		# user passed the test, now to see if they earned a new certificate
+		flash[:message] = "Congratulations, you passed!"
 		certificates = Certificate.all
 		certificates.each do |cert|
 			requisites = true
@@ -26,6 +27,7 @@ class TestsController < ApplicationController
 			end
 			if requisites
 				current_user.certificates << cert
+				flash[:message] = "#{flash[:message]} <br> #{cert.name} has been awarded to you!"
 			end
 		end
 
@@ -177,6 +179,7 @@ class TestsController < ApplicationController
 		if passed
 			redirect "/tests/#{params[:id]}/succeed"
 		else
+			flash[:message] = "Test failed, please try again later."
 			redirect '/tests/failed'
 		end
 	end
