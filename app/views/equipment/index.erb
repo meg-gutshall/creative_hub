@@ -1,18 +1,20 @@
 <h2>Equipment Listing</h2> <hr>
 
 <% @equipments.each do |equipment| %>
-	<h3><%= equipment.name %></h3>
+	<a href="/equipment/<%=equipment.id%>"><h3><%= equipment.name %></h3></a>
 	Required certification:
 	<ul>
 		<% if equipment.certificate %>
-			<li><a href="/certifications/<%=equipment.certificate.id%>"><%=equipment.certificate.name%></a></li>
+			<li><a href="/certificates/<%=equipment.certificate.id%>"><%=equipment.certificate.name%></a></li>
 		<% else %>
 			No certificate specified. Choose edit to fix.
 		<% end %>
 	</ul>
-	<a href="/equipment/<%=equipment.id%>/edit"><button>Edit equipment</button></a>
+	<% if current_user.is_admin %>
+		<a href="/equipment/<%=equipment.id%>/edit"><button>Edit equipment</button></a>
 		<form action="/equipment/<%=equipment.id%>" method="post">
 			<input type="hidden" name="_method" value="delete"><button>Delete equipment</button>
 		</form> <hr>
+	<% end %>
 <% end %>
 <a href="/equipment/new"><button>Add new equipment</button></a>

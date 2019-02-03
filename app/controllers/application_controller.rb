@@ -46,7 +46,6 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/signup' do
-    binding.pry
     if User.find_by(:email => params[:email])
       message = "Duplicate email. Please try again."
       redirect '/signup'

@@ -1,5 +1,8 @@
 <h2><%=@equip.name%></h2>
-Currently in use:  <%=@equip.in_use%> <hr>
+Currently in use:  <%=@equip.in_use%> 
+<% if !@equip.in_use %>
+	<br><a href="<%=@equip.id%>/use"><button>Use equipment</button></a>
+<% end %><hr>
 Required certification:
 	<ul>
 		<% if @equip.certificate %>

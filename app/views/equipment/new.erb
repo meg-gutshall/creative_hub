@@ -1,1 +1,11 @@
 <h2>New equipment</h2>
+<form action="/equipment" method="post">
+	<input type="text" name="name" placeholder="Equipment name:"><br>
+	Select the associated certificate or create one below: <br>
+	<% @certifs.each do |certif| %>
+		<input type="radio" name="certificate_name" value="<%=certif.name%>"><%=certif.name%><br>
+	<% end %>
+	<input type="text" name="certificate_name" placeholder="New certiifcate name:"><hr>
+	If no certificate is selected or new name given, a new certificate will be created with the same name as the equipment.
+	<input type="submit" value="Create equipment">
+</form>

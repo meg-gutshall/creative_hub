@@ -58,7 +58,6 @@ class TestsController < ApplicationController
 		params[:questions].each do |question|
 			if !question[:text].empty?
 				new_q = Question.new(:text => question[:text])
-				binding.pry
 				question[:answers].each do |answer|
 					if !answer[:text].empty?
 						new_a = Answer.create(answer)
@@ -99,7 +98,6 @@ class TestsController < ApplicationController
 		end
 		
 		# next, go through certificate_ids, see if they've been updated
-		binding.pry
 		if !params[:test].keys.include?("certificate_ids")
 			params[:test][:certificate_ids] = []
 		end
@@ -167,7 +165,6 @@ class TestsController < ApplicationController
 	end
 
 	post '/tests/:id/check' do
-		binding.pry
 		passed = true
 		params[:questions].each do |id, answers|
 			original_question = Question.find(id)

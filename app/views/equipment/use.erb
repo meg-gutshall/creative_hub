@@ -1,0 +1,12 @@
+<h2>Use <%=@equip.name%></h2>
+
+<% if @user.is_certified(@equip.certificate.id) %>
+	You are certified. <br>
+	<% if !@equip.in_use %>
+		<a href="/equipment/<%=@equip.id%>/begin" method="post"><button>Begin use</button></a>
+	<% else %>
+		<a href="/equipment/<%=@equip.id%>/stop" method="post"><button>Stop use</button></a>
+	<% end %>
+<% else %>
+	You are not certified. Follow the <a href="/certificates/<%=@equip.certificate.id%>">link</a> to take the required tests.
+<% end %>

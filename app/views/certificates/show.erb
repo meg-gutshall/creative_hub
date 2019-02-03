@@ -1,11 +1,14 @@
 <h2>Certificate: <%=@cert.name%></h2>
-<form action="/certificates/<%=@cert.id%>" method="post">
-	<input type="hidden" name="_method" value="delete">
-	<input type="submit" value="Delete certificate">
-</form><a href="/certificates/<%=@cert.id%>/edit"><button>Edit certificate</button></a><hr>
+<% if current_user.is_admin %>
+	<form action="/certificates/<%=@cert.id%>" method="post">
+		<input type="hidden" name="_method" value="delete">
+		<input type="submit" value="Delete certificate">
+	</form><a href="/certificates/<%=@cert.id%>/edit"><button>Edit certificate</button></a><hr>
+<% end %>
 Requires completion of tests: <br>
 <ul>
 	<% @cert.tests.each do |t| %>
 		<li><a href="/tests/<%=t.id%>"><%=t.name%></a></li>
 	<% end %>
 </ul>
+<a href="/certificates/<%=@cert.id%>/apply"><button>Apply for certificate</button></a>
