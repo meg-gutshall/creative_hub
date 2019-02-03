@@ -19,12 +19,13 @@ q = Question.create(:text => "When is it acceptable to leave messes for others t
 q.answers << Answer.create(:text => "Always")
 q.answers << Answer.create(:text => "Sometimes")
 q.answers << Answer.create(:text => "Rarely")
-q.answers << Answer.create(:text => "Never")
+q.answers << Answer.create(:text => "Never", :is_correct => true)
+t.questions << q
 
 q = Question.create(:text => "Your momma lives here.")
 q.answers << Answer.create(:text => "True")
 q.answers << Answer.create(:text => "False")
-q.answers << Answer.create(:text => "Doesn't matter, clean up after yourself!")
+q.answers << Answer.create(:text => "Doesn't matter, clean up after yourself!", :is_correct => true)
 q.save
 t.questions << q
 
