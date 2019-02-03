@@ -9,6 +9,7 @@
 		<% else %>
 			No certificate specified. Choose edit to fix.
 		<% end %>
+		<%# What does "choose edit to fix" mean? Not clear on what the directions are. %>
 	</ul>
 	<% if current_user.is_admin %>
 		<a href="/equipment/<%=equipment.id%>/edit"><button>Edit equipment</button></a>
@@ -16,5 +17,6 @@
 			<input type="hidden" name="_method" value="delete"><button>Delete equipment</button>
 		</form> <hr>
 	<% end %>
+	<%# These buttons still show for non-admin users. Clicking them brings the user back to the homepage. %>
 <% end %>
 <a href="/equipment/new"><button>Add new equipment</button></a>

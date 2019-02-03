@@ -1,8 +1,10 @@
 <h2><%=@equip.name%></h2>
-Currently in use:  <%=@equip.in_use%> 
+Currently in use:  <%=@equip.in_use%><br>
 <% if !@equip.in_use %>
 	<br><a href="<%=@equip.id%>/use"><button>Use equipment</button></a>
 <% end %><hr>
+<%# Clicking this button without the required certification throws an error. Maybe display a 
+flash message and take the user to the certificate they need to use the equipment? %>
 Required certification:
 	<ul>
 		<% if @equip.certificate %>
@@ -10,6 +12,7 @@ Required certification:
 		<% else %>
 			No certificate specified. Choose edit to fix.
 		<% end %>
+		<%# What does "choose edit to fix" mean? Not clear on what the directions are. %>
 	</ul>
 <a href="/equipment/<%=@equip.id%>/edit"><button>Edit equipment</button></a>
 		<form action="/equipment/<%=@equip.id%>" method="post">

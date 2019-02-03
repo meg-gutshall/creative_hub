@@ -10,5 +10,6 @@ Requires completion of tests: <br>
 	<% @cert.tests.each do |t| %>
 		<li><a href="/tests/<%=t.id%>"><%=t.name%></a></li>
 	<% end %>
+	<%# The test list is blank. %>
 </ul>
 <a href="/certificates/<%=@cert.id%>/apply"><button>Apply for certificate</button></a>

@@ -1,13 +1,23 @@
 <!doctype html>
 <html>
+  <%# I cleaned up the indentation and spacing here because it was really hard to tell what was going on at first. %>
   <head>
+    <meta charset="utf-8">
+    <%# Enables character encoding %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%# Enables responsive capabilites (you would still have to code them in to the display). %>
     <title>NWA Creative Hub</title>
   </head>
+
   <body>
-  	<header><h2>NWA Creative Hub</h2></header><hr>
-  	
+  	<header><h1>NWA Creative Hub</h1></header>
+    <%# This is your page title so it should be the most important text on the page, hence the h1 tag. %>
+    
+    <hr>
     <div class="nav">
-      <div align="left" class=left_nav>
+
+      <div style="float: left;" class=left_nav>
+      <%# Above is how you insert styling directly into HTML. Ideally it would all be done in a CSS file. %>
       		<a href="/tests">Tests</a>
       		<a href="/certificates">Certificates</a>
           <a href="/equipment">Equipment</a>
@@ -16,7 +26,8 @@
               <a href="/users">Users</a>
           <% end %>
       </div>
-      <div align="right" class=right_nav>  
+
+      <div style="float: right;" class=right_nav>  
           Hello, <%=current_user.first_name%> <%=current_user.last_name%>!
           <a href="/profile">Profile</a>
           <a href="/logout">Logout</a>
@@ -25,10 +36,14 @@
           <a href="/signup">Sign up</a>
         <% end %>
       </div>
-  	</div><hr>
+
+    </div>
+    <hr style="margin-top: 35px;">
+
     <% if flash.has?(:message) %>
       <h4> <%= flash[:message] %> </h4>
     <% end %>
+    
     <div class="container">
       <%= yield %>
     </div>
