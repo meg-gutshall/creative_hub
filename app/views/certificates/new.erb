@@ -5,5 +5,6 @@
 	<% @tests.each do |t| %>
 		<input type="checkbox" value="<%=t.id%>" name=test_ids[]><%=t.name%><br>
 	<% end %>
+	Creating a new certificate will automatically create equipment by the same name, if it doesn't already exist. <br> This can be edited on the equipment page.
 	<input type="submit" id="create_button" value="Create certificate">
 </form>

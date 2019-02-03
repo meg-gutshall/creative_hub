@@ -36,8 +36,8 @@ class CertificatesController < ApplicationController
 	end
 
 	post '/certificates' do
-		new_cert = Certificate.create(params)
-
+		new_cert = Certificate.find_or_create_by(params)
+		new_cert.equipment = Equipment.find_or_create_by(params[:name])
 		redirect "/certificates"
 	end
 

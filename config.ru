@@ -9,4 +9,5 @@ use TestsController
 use AnswersController
 use CertificatesController
 use UsersController
+use EquipmentController
 run ApplicationController

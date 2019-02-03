@@ -33,3 +33,6 @@ c = Certificate.create(:name => "CNC")
 
 admin = User.create(:first_name => "ad", :last_name => "min", :email => "brad.schrag@gmail.com", :phone_number => "479-799-2325", :password_digest => BCrypt::Password.create('admin'), :is_admin => true)
 non_admin = User.create(:first_name => "Mark", :last_name => "Not important", :email => "markschmo@nowhere.com", :phone_number => "555-4123", :password_digest => BCrypt::Password.create('mark'))
+
+Equipment.create(:name => "CNC")
+Equipment.create(:name => "3D Printer")

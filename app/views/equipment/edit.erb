@@ -1,0 +1,11 @@
+<h2>Edit <%=@equip.name%></h2>
+<form action="/equipment/<%=@equip.id%>" method="post">
+	<input type="hidden" name="_method" value="patch">
+	Edit name: <br>
+	<input type="text" name="name" value="<%=@equip.name%>"> <hr>
+	Edit associated certificate: <br>
+	<% @certifs.each do |certif| %>
+		<input type="radio" name="certificate_id" value="<%=certif.id%>"<%="checked" if @equip.certificate == certif%>> <%=certif.name%> <br>
+	<% end %>
+	<input type="submit" value="Edit equipment">
+</form>
