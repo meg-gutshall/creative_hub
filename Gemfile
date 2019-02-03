@@ -1,5 +1,7 @@
 gem 'sinatra'
-gem 'activerecord', :require => 'active_record'
+gem 'activerecord', '4.2.5', :require => 'active_record'
+# Specify the version of ActiveRecord because if you don't, when you
+# run the migration it will throw an error.
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'rake'
 gem 'require_all'
